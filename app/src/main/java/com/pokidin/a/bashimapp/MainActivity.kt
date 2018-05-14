@@ -16,7 +16,10 @@ import io.reactivex.schedulers.Schedulers
 
 const val tag = "MainActivity"
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ChangeSourceListener {
+    override fun sourceChanged(position: Int) {
+        Log.d(tag, "from main = ${adapter[position]}")
+    }
 
     @BindView(R.id.list)
     lateinit var listView: RecyclerView

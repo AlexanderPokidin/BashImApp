@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface BashImApiService {
 
     @GET("api/get")
-        fun searchQuotes(
+    fun searchQuotes(
             @Query("site") site: String,
             @Query("name") name: String,
             @Query("num") num: Int
@@ -20,9 +20,9 @@ interface BashImApiService {
     @GET("api/sources")
     fun searchSources(): io.reactivex.Observable<List<List<SourceOfQuotes>>>
 
-    companion object Factory{
-        fun create():BashImApiService{
-            val gson:Gson = GsonBuilder().setLenient().create()
+    companion object Factory {
+        fun create(): BashImApiService {
+            val gson: Gson = GsonBuilder().setLenient().create()
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))
